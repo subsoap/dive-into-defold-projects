@@ -36,7 +36,7 @@ function init(self)
 	
 	msg.post(".", "acquire_input_focus")
 	self.move_vector = vmath.vector3(0.0,0.0,0.0)
-	print(self.move_vector)
+	--print(self.move_vector)
 	self.speed = 6
 	self.position = go.get_position()
 	self.direction = vmath.vector3()

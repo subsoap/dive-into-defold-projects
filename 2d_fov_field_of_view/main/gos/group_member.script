@@ -3,10 +3,18 @@ go.property("group_id", 0)
 function init(self)
 	msg.post("group_manager","register_group_object", {group_id = self.group_id, position = go.get_position()})
 	self.counter = 0
+	self.seen = false
 end
 
 function group_1_messages(self, message_id, message, sender)
 	if message_id == hash("i_see_you") then
+		
+		if self.seen == false then
+			local position = go.get_position()
+			position.y = position.y + 20
+			factory.create("/speech_factory#factory", position)
+			
+		end
 		msg.post("#dot", "play_animation", {id = hash("dot_red")})
 		self.seen = true
 		self.counter = 0
