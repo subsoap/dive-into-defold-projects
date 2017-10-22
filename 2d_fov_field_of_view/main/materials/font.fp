@@ -11,6 +11,6 @@ void main()
 {
     // Outline
 	lowp vec4 tint_pm = vec4(tint.xyz * tint.w, tint.w);
-    lowp vec2 t = texture2D(texture, var_texcoord0.xy).xy * tint_pm;
+    lowp vec2 t = texture2D(texture, var_texcoord0.xy).xy * tint_pm.w;
     gl_FragColor = vec4(var_face_color.xyz, 1.0) * t.x * var_face_color.w + vec4(var_outline_color.xyz * t.y * var_outline_color.w, t.y * var_outline_color.w) * (1.0 - t.x) ;
 }
