@@ -1,0 +1,6 @@
+images {
+  image: "/main/assets/screen_960_640.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

@@ -1,0 +1,35 @@
+local group_manager_data = require("main.gos.group_manager_data")
+
+local hashes = {
+register_group_object = hash("register_group_object"),
+}
+
+
+function init(self)
+	
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	--pprint(group_manager_data.group_data)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hashes.register_group_object then
+		table.insert(group_manager_data.group_data,{group_id = message.group_id, id = sender, position = message.position})
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

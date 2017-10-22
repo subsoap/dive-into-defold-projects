@@ -1,0 +1,36 @@
+images {
+  image: "/main/assets/sprites/arrow_green.png"
+}
+images {
+  image: "/main/assets/sprites/arrow_red.png"
+}
+images {
+  image: "/main/assets/sprites/arrow_white.png"
+}
+images {
+  image: "/main/assets/sprites/arrow_yellow.png"
+}
+images {
+  image: "/main/assets/sprites/dot_green.png"
+}
+images {
+  image: "/main/assets/sprites/dot_purple.png"
+}
+images {
+  image: "/main/assets/sprites/dot_red.png"
+}
+images {
+  image: "/main/assets/sprites/dot_shadow.png"
+}
+images {
+  image: "/main/assets/sprites/fov_60_green.png"
+}
+images {
+  image: "/main/assets/sprites/fov_60_normal.png"
+}
+images {
+  image: "/main/assets/sprites/fov_60_red.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 4

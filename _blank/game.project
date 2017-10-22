@@ -1,0 +1,19 @@
+[project]
+title = Blank Project
+dependencies = 
+
+[library]
+include_dirs = 
+
+[input]
+game_binding = /all_keys.input_bindingc
+
+[bootstrap]
+main_collection = /main/main.collectionc
+
+[physics]
+type = 2D
+
+[display]
+variable_dt = 1
+

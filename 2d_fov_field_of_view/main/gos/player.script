@@ -1,0 +1,96 @@
+local group_manager_data = require("main.gos.group_manager_data")
+
+local input = 
+{
+key_w = hash("key_w"),	
+key_a = hash("key_a"),
+key_s = hash("key_s"),
+key_d = hash("key_d"),
+key_left = hash("key_left"),
+key_right = hash("key_right"),
+key_up = hash("key_up"),
+key_down = hash("key_down"),
+}
+
+
+function check_fov(position_1, position_2)
+end
+
+function check_nearby_objects(self)
+	for i=1, #group_manager_data.group_data, 1 do
+		local difference = group_manager_data.group_data[i].position - self.position
+		local distance = vmath.length(difference)
+		if distance <= 100 then
+			local inverse_length = 1 / distance
+			local direction = difference * inverse_length
+			local dot_product = vmath.dot(self.direction,direction)
+			if dot_product >= math.cos(self.fov_half) then 
+				msg.post(group_manager_data.group_data[i].id,"i_see_you")
+			end
+		end
+	end
+end
+
+function init(self)
+	
+	msg.post(".", "acquire_input_focus")
+	self.move_vector = vmath.vector3(0.0,0.0,0.0)
+	print(self.move_vector)
+	self.speed = 6
+	self.position = go.get_position()
+	self.direction = vmath.vector3()
+	self.direction_radian = 0
+	self.direction_angle = 0
+	self.arrow_sprite = go.get_id("direction")
+	self.fov_sprite = go.get_id("fov")
+	self.fov = math.pi / 3
+	self.fov_half = self.fov / 2
+end
+
+function final(self)
+
+end
+
+function update(self, dt)
+	
+	check_nearby_objects(self)
+	
+	if not (self.move_vector.x == 0 and self.move_vector.y == 0) then
+		self.direction = vmath.normalize(self.move_vector)
+		self.direction_radian = math.atan2(self.direction.y, self.direction.x)
+		self.direction_angle = self.direction_radian * 180 / math.pi
+		self.move_vector = self.direction * self.speed
+	end
+
+	self.position = self.position + self.move_vector
+	go.set_position(self.position)
+	go.set_rotation(vmath.quat_rotation_z(self.direction_radian), self.arrow_sprite)
+	go.set_rotation(vmath.quat_rotation_z(self.direction_radian), self.fov_sprite)
+	
+	self.move_vector.x = 0
+	self.move_vector.y = 0
+
+end
+
+function on_message(self, message_id, message, sender)
+
+end
+
+function on_input(self, action_id, action)
+	if action_id == input.key_w or action_id == input.key_up then
+		self.move_vector.y = self.move_vector.y  + 1
+	end
+	if action_id == input.key_s or action_id == input.key_down then
+		self.move_vector.y = self.move_vector.y - 1
+	end
+	if action_id == input.key_a or action_id == input.key_left then
+		self.move_vector.x = self.move_vector.x - 1
+	end
+	if action_id == input.key_d or action_id == input.key_right then
+		self.move_vector.x = self.move_vector.x + 1
+	end
+end
+
+function on_reload(self)
+
+end
