@@ -10,6 +10,7 @@ key_left = hash("key_left"),
 key_right = hash("key_right"),
 key_up = hash("key_up"),
 key_down = hash("key_down"),
+touch = hash("touch"),
 }
 
 
@@ -76,6 +77,12 @@ function on_message(self, message_id, message, sender)
 
 end
 
+function distance_between_vectors(vector3_1, vector3_2)
+	local dX = vector3_2.x - vector3_1.x
+	local dY = vector3_2.y - vector3_1.y
+	return math.sqrt((dX^2) + (dY^2))
+end
+
 function on_input(self, action_id, action)
 	if action_id == input.key_w or action_id == input.key_up then
 		self.move_vector.y = self.move_vector.y  + 1
@@ -88,6 +95,13 @@ function on_input(self, action_id, action)
 	end
 	if action_id == input.key_d or action_id == input.key_right then
 		self.move_vector.x = self.move_vector.x + 1
+	end
+	
+	if action_id == input.touch then
+		--if vmath.length(vmath.vector3(action.screen_x, action.screen_y, 0) + self.position) >= 100 then
+		if distance_between_vectors(vmath.vector3(action.screen_x, action.screen_y, 0), self.position) >= 40 then
+			self.move_vector = vmath.vector3(action.screen_x, action.screen_y, 0) - self.position
+		end
 	end
 end
 
