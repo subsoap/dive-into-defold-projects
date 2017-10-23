@@ -439,6 +439,90 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "dot20"
+  prototype: "/main/gos/dot.go"
+  position {
+    x: 313.0
+    y: 608.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "group_member"
+    properties {
+      id: "group_id"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "dot21"
+  prototype: "/main/gos/dot.go"
+  position {
+    x: 891.0
+    y: 524.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "group_member"
+    properties {
+      id: "group_id"
+      value: "3.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "dot22"
+  prototype: "/main/gos/dot.go"
+  position {
+    x: 150.0
+    y: 159.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "group_member"
+    properties {
+      id: "group_id"
+      value: "4.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "player"
   collection: "/main/gos/player.collection"
@@ -515,6 +599,9 @@ embedded_instances {
   children: "dot18"
   children: "dot19"
   children: "dot2"
+  children: "dot20"
+  children: "dot21"
+  children: "dot22"
   children: "dot3"
   children: "dot4"
   children: "dot5"

@@ -4,6 +4,15 @@ function init(self)
 	msg.post("group_manager","register_group_object", {group_id = self.group_id, position = go.get_position()})
 	self.counter = 0
 	self.seen = false
+	
+	if self.group_id == 2 then
+		msg.post("#dot", "play_animation", {id = hash("dot_pink")})
+	elseif self.group_id == 3 then
+		msg.post("#dot", "play_animation", {id = hash("dot_blue")})
+	elseif self.group_id == 4 then
+		msg.post("#dot", "play_animation", {id = hash("dot_white")})
+	end
+	
 end
 
 function group_1_messages(self, message_id, message, sender)
@@ -38,8 +47,9 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if self.group_id == 1 then
+	if message.group_id == 1 and self.group_id == 1 then
 		group_1_messages(self, message_id, message, sender)
+		
 	end
 end
 

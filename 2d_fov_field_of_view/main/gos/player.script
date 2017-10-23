@@ -26,7 +26,8 @@ function check_nearby_objects(self)
 			local direction = difference * inverse_length
 			local dot_product = vmath.dot(self.direction,direction)
 			if dot_product >= math.cos(self.fov_half) then 
-				msg.post(group_manager_data.group_data[i].id,"i_see_you")
+				msg.post(group_manager_data.group_data[i].id,"i_see_you", {group_id = group_manager_data.group_data[i].group_id})
+				
 			end
 		end
 	end
